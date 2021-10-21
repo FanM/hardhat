@@ -17,21 +17,21 @@ function generatePathsSync(packageName = "hardhat") {
 }
 
 function getConfigDirSync(): string {
-  const { config } = generatePathsSync();
-  fs.ensureDirSync(config);
-  return config;
+  const { temp } = generatePathsSync();
+  fs.ensureDirSync(temp);
+  return temp;
 }
 
 async function getDataDir(packageName?: string): Promise<string> {
-  const { data } = await generatePaths(packageName);
-  await fs.ensureDir(data);
-  return data;
+  const { temp } = await generatePaths(packageName);
+  await fs.ensureDir(temp);
+  return temp;
 }
 
 export async function getCacheDir(): Promise<string> {
-  const { cache } = await generatePaths();
-  await fs.ensureDir(cache);
-  return cache;
+  const { temp } = await generatePaths();
+  await fs.ensureDir(temp);
+  return temp;
 }
 
 export async function readAnalyticsId() {
